@@ -1,0 +1,3 @@
+Question 1 :
+Package.json : fichier qui va contenir les informations principales sur notre projet.
+
