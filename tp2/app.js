@@ -1,6 +1,6 @@
-const app = require('./routes/index');
+const app = require('./src/routes/index');
 const port = 3000;
-const { connectTodB } = require('./services/db/connection');
+const { connectTodB } = require('./src/services/db/connection');
 
 startServer()
 
