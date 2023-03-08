@@ -1,10 +1,17 @@
 const express = require('express');
 const router = express.Router();
-const { createItem, findItem } = require('../controllers/items');
+const {addItem, findItem, deleteItem, deleteItemMany  } = require ('../controllers/items.js');
 
 
-router.post('/create', createItem);
-router.get('/find', findItem);
+// --------------------------------------------
+
+router.post("/add", addItem);
+router.get("/add/find/:nom", findItem);
+router.get("/add/delete/:nom", deleteItem);
+router.get("/add/deletemany/:nom", deleteItemMany);
+
+// --------------------------------------------
+
 
 module.exports = router;
 
