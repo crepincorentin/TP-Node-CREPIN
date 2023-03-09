@@ -1,4 +1,11 @@
+// Description: Fichier contenant les fonctions de gestion des utilisateurs
+
+
 const crud = require('../services/db/crud')
+
+
+// ----------------------------------------------------------------------------------------------
+
 
 // Fonction de création d'un utilisateur
 async function createUser(req, res, next) {
@@ -14,6 +21,10 @@ async function createUser(req, res, next) {
     }
 }
 
+
+// ----------------------------------------------------------------------------------------------
+
+
 // Fonction de recherche d'un utilisateur avec son nom
 async function findUser(req, res, next) {
     try {
@@ -28,8 +39,11 @@ async function findUser(req, res, next) {
     }
 }
 
-// Fonction de recherche d'un utilisateur avec son nom (filtre sur le nom)
 
+// ----------------------------------------------------------------------------------------------
+
+
+// Fonction de recherche de tous les utilisateurs
 async function findUsermany(req, res) {
     try {
         let nom = req.params.nom;
@@ -43,7 +57,11 @@ async function findUsermany(req, res) {
     }
 }
 
-// Modifier les informations personnelles d'un utilisateur
+
+// ----------------------------------------------------------------------------------------------
+
+
+// Fonction de mise à jour d'un utilisateur
 async function updateUser(req, res) {
     try {
         let id = req.params.id;
@@ -58,10 +76,16 @@ async function updateUser(req, res) {
 }
 
 
+// ----------------------------------------------------------------------------------------------
 
+
+// Export des fonctions
 module.exports = {
     createUser,
     findUser,
     findUsermany,
     updateUser
 };
+
+
+// ----------------------------------------------------------------------------------------------

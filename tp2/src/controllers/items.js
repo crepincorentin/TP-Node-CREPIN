@@ -1,4 +1,11 @@
+// Description: Ce fichier contient les fonctions qui permettent de gérer les items
+
+
 const crud = require('../services/db/crud')
+
+
+// ----------------------------------------------------------------------------------------------
+
 
 // Fonction qui ajouter un item au registre
 async function addItem(req, res, next) {
@@ -14,6 +21,10 @@ async function addItem(req, res, next) {
     }
 }
 
+
+// ----------------------------------------------------------------------------------------------
+
+
 // Fonction qui recherche un item dans le registre avec un filtre sur le nom 
 async function findItem(req, res) {
     try {
@@ -26,6 +37,10 @@ async function findItem(req, res) {
         throw e;
     }
 }
+
+
+// ----------------------------------------------------------------------------------------------
+
 
 // Fonction qui supprime un item 
 async function deleteItem(req, res) {
@@ -40,6 +55,10 @@ async function deleteItem(req, res) {
     }
 }
 
+
+// ----------------------------------------------------------------------------------------------
+
+
 // Fonction qui supprime plusieurs item avec le même nom
 async function deleteItemMany(req, res) {
     try {
@@ -53,9 +72,17 @@ async function deleteItemMany(req, res) {
     }
 }
 
+
+// ----------------------------------------------------------------------------------------------
+
+
+// Exportation des fonctions
 module.exports = {
     findItem,
     addItem,
     deleteItem,
     deleteItemMany
 };
+
+
+// ----------------------------------------------------------------------------------------------

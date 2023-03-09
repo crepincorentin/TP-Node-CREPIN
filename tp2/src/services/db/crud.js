@@ -1,3 +1,8 @@
+// Description: Ce fichier contient les fonctions CRUD pour la base de données
+
+// ----------------------------------------------------------------------------------------------
+
+
 // Fonction Find one
 const { getCollection } = require('./connection');
 
@@ -13,6 +18,10 @@ async  function  findOne(collectionName, query, options = {}) {
 	}
 }
 
+
+// ----------------------------------------------------------------------------------------------
+
+
 // Fonction Find all 
 async  function  find(collectionName, query, options = {}) {
 	try {
@@ -26,7 +35,11 @@ async  function  find(collectionName, query, options = {}) {
 	}
 }
 
-// insertOne 
+
+// ----------------------------------------------------------------------------------------------
+
+
+// Fonction insertOne
 async  function  insertOne(collectionName, document) {
 	try {
 		const  collection = getCollection(collectionName);
@@ -39,7 +52,11 @@ async  function  insertOne(collectionName, document) {
 	}
 }
 
-// insertMany
+
+// ----------------------------------------------------------------------------------------------
+
+
+// Fonction insertMany
 async  function  insertMany(collectionName, documents) {
 	try {
 		const  collection = getCollection(collectionName);
@@ -51,7 +68,12 @@ async  function  insertMany(collectionName, documents) {
 		throw  e;
 	}
 }
-// updateOne
+
+
+// ----------------------------------------------------------------------------------------------
+
+
+// Fonction updateOne
 async  function  updateOne(collectionName, query, document) {
 	try {
 		const collection = getCollection(collectionName);
@@ -64,7 +86,11 @@ async  function  updateOne(collectionName, query, document) {
 	}
 }
 
-// updateMany
+
+// ----------------------------------------------------------------------------------------------
+
+
+// Fonction updateMany
 async  function  updateMany(collectionName, query, document) {
 	try {
 		const collection = getCollection(collectionName);
@@ -77,7 +103,11 @@ async  function  updateMany(collectionName, query, document) {
 	}
 }
 
-// replace
+
+// ----------------------------------------------------------------------------------------------
+
+
+// Fonction replace
 async  function  replace(collectionName, query, document) {
 	try {
 		const collection = getCollection(collectionName);
@@ -90,7 +120,11 @@ async  function  replace(collectionName, query, document) {
 	}
 }
 
-// deleteOne
+
+// ----------------------------------------------------------------------------------------------
+
+
+// Fonction deleteOne
 async  function  deleteOne(collectionName, query) {
 	try {
 		const collection = getCollection(collectionName);
@@ -103,7 +137,11 @@ async  function  deleteOne(collectionName, query) {
 	}
 }
 
-// deleteMany
+
+// ----------------------------------------------------------------------------------------------
+
+
+// Fonction deleteMany
 async  function  deleteMany(collectionName, query) {
 	try {
 		const collection = getCollection(collectionName);
@@ -116,4 +154,20 @@ async  function  deleteMany(collectionName, query) {
 	}
 }
 
-module.exports = {findOne, insertOne, insertMany, updateOne, updateMany, replace, deleteOne, deleteMany, find};
+
+// ----------------------------------------------------------------------------------------------
+
+
+// Export des fonctions
+module.exports = {findOne,
+	 insertOne,
+	 insertMany,
+	 updateOne,
+	 updateMany,
+	 replace,
+	 deleteOne,
+	 deleteMany,
+	 find};
+
+
+// ----------------------------------------------------------------------------------------------

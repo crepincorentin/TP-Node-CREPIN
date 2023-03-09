@@ -1,9 +1,15 @@
+// Description: Ce fichier contient les fonctions qui permettent de gérer les watchlist
+
+
 const crud = require('../services/db/crud')
+
+
+// ----------------------------------------------------------------------------------------------
+
 
 // Fonction qui crée une watchlist pour un utilisateur
 async function createWatchlist(req, res, next) {
     try {
-        // Tester le type que l'utilisateur va saisir saisir au nv de l'id item et id user il faut que ca soit des integer et non des string
         if (typeof req.body.id_users !== 'number' || typeof req.body.id_item !== 'number') {
             return res.status(400).send('Veuillez saisir un nombre');
         }
@@ -20,6 +26,10 @@ async function createWatchlist(req, res, next) {
     }
 }
 
+
+// ----------------------------------------------------------------------------------------------
+
+
 // Fonction qui recherche une watchlist pour un utilisateur
 async function findWatchlist(req, res, next) {
     try {
@@ -34,20 +44,29 @@ async function findWatchlist(req, res, next) {
     }   
 }
 
-// Récupération de la liste des watchlist
-async function findWatchlistmany(req, res, next) {
+
+// ----------------------------------------------------------------------------------------------
+
+
+// Fonction qui recherche toutes les watchlist pour un utilisateur
+async function findAllWatchlist(req, res, next) {
     try {
-        let test = await crud.find('watchlist')
+        let id = req.params.id;
+        let test = await crud.find('watchlist', {"id_users" : id})
         return res.send(test)
     }
     catch (e) {
         console.log(`Erreur lors de l execution de la fonction findWatchlist`);
         console.log(e);
         throw e;
-    }   
+    }
 }
 
-// Add item to watchlist
+
+// ----------------------------------------------------------------------------------------------
+
+
+// Fonction qui ajoute un item à une watchlist
 async function addItemToWatchlist(req, res, next) {
     try {
         let test = await crud.insertOne('watchlist', req.body)
@@ -60,7 +79,11 @@ async function addItemToWatchlist(req, res, next) {
     }
 }
 
-// Modifier le statut d'un item dans une watchlist
+
+// ----------------------------------------------------------------------------------------------
+
+
+// Fonction qui modifie le statut d'un item d'une watchlist
 async function updateItemStatus(req, res) {
     try {
         let id = req.params.id;
@@ -74,7 +97,11 @@ async function updateItemStatus(req, res) {
     }
 }
 
-// Récupéré le contenu d'une watchlist
+
+// ----------------------------------------------------------------------------------------------
+
+
+// Fonction qui recherche le contenu d'une watchlist
 async function findWatchlistContent(req, res) {
     try {
         let id = req.params.id;
@@ -88,7 +115,11 @@ async function findWatchlistContent(req, res) {
     }
 }
 
-// Supprimer une watchlist
+
+// ----------------------------------------------------------------------------------------------
+
+
+// Fonction qui supprime une watchlist
 
 async function deletewatchlist(req, res) {
     try {
@@ -102,22 +133,11 @@ async function deletewatchlist(req, res) {
     }
 }
 
-// Ajouter une watchlist en favoris
-// async function addWatchlistToFavorites(req, res) {
-//     try {
-//         let test = await crud.insertOne('watchlist', req.body)
-//         return res.send(test)
-//     }
-//     catch (e) {
-//         console.log(`Erreur lors de l execution de la fonction addWatchlistToFavorites`);
-//         console.log(e);
-//         throw e;
-//     }
-// }
 
-// Partager sa watchlist avec un autre utilisateur
+// ----------------------------------------------------------------------------------------------
 
-// Donner la possibilité d'écrire une note personnelle sur une watchlist ou un item d'une watchlist.
+
+// Fonction qui ajoute une note à un item d'une watchlist
 async function notewatchlist(req, res) {
     try {
         let id = req.params.id;
@@ -132,6 +152,44 @@ async function notewatchlist(req, res) {
 }
 
 
+// ----------------------------------------------------------------------------------------------
+
+
+// Fonction qui permet de partager sa watchlist avec un autre utilisateur
+async function sharewatchlist(req, res) {
+    try {
+        let id = req.params.id;
+        let test = await crud.updateOne('watchlist', {"id_item" : id },{$set: { "id_users": req.body.id_users }})
+        return res.send(test)
+    }
+    catch (e) {
+        console.log(`Erreur lors de l execution de la fonction sharewatchlist`);
+        console.log(e);
+        throw e;
+    }
+}
+
+
+// ----------------------------------------------------------------------------------------------
+
+
+// Fonction qui permet d'ajouter une watchlist en favoris
+async function addfavoris(req, res) {
+    try {
+        let id = req.params.id;
+        let test = await crud.updateOne('watchlist', {"id_item" : id },{$set: { "favoris": req.body.favoris }})
+        return res.send(test)
+    }
+    catch (e) {
+        console.log(`Erreur lors de l execution de la fonction addfavoris`);
+        console.log(e);
+        throw e;
+    }
+}
+
+
+// ----------------------------------------------------------------------------------------------
+
 
 // Export des fonctions
 module.exports = {
@@ -139,8 +197,13 @@ module.exports = {
       findWatchlist,
       addItemToWatchlist,
       updateItemStatus,
-      findWatchlistmany,
+      findAllWatchlist,
       findWatchlistContent,
       deletewatchlist,
-      notewatchlist
+      notewatchlist,
+      sharewatchlist,
+      addfavoris
 };
+
+
+// ----------------------------------------------------------------------------------------------
