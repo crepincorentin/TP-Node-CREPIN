@@ -1,4 +1,3 @@
-// Fonction qui sort le nom du serveur et son nombre de membres
 
 const { SlashCommandBuilder } = require('discord.js');
 
