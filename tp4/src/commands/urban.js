@@ -1,4 +1,3 @@
-// créez une commande 'urban' qui utilise l'API urbandictionary (https://api.urbandictionary.com/v0/define? + votre terme à chercher
 
 const { SlashCommandBuilder } = require('discord.js')
 const { request } = require('undici')
