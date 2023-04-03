@@ -1,5 +1,3 @@
-// commande avec sous-commande 'user' et 'server', si server est sélectionné sort les mêmes informations que la commande server, si user sort les mêmes infos que la commande user (si un pseudo est passé avec la sous-commande, sort les informations sur l'utilisateur passé en option, sinon sur l'utilisateur commanditaire)
-
 
 const { SlashCommandBuilder } = require('discord.js');
 

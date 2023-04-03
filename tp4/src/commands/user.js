@@ -1,4 +1,3 @@
-// Fonction qui sort le nom de l'utilisateur de la commande et sa date d'arrivée sur le serveur
 
 const { SlashCommandBuilder } = require('discord.js');
 
