@@ -27,7 +27,7 @@ function getUser(id, usersData) {
 
   return usersData.find((user) => user.id === id);
 
-}
+}  
 
 /**
  * @function
