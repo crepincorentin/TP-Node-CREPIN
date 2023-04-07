@@ -1,9 +1,5 @@
-class item{constructor(name,date,resume,note,realisateur){      
+class item{constructor(name){      
     this.name = name;
-    this.date = date;
-    this.resume = resume;
-    this.note = note;
-    this.realisateur = realisateur;  
 }}
 
 module.exports = {item};

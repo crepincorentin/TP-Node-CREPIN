@@ -10,12 +10,6 @@ const crud = require('../services/db/crud')
 // Fonction qui crée une watchlist pour un utilisateur
 async function createWatchlist(req, res, next) {
     try {
-        if (typeof req.body.id_users !== 'number' || typeof req.body.id_item !== 'number') {
-            return res.status(400).send('Veuillez saisir un nombre');
-        }
-        else {
-            console.log('ok');
-        }
         let test = await crud.insertOne('watchlist', req.body)
         return res.send(test)
     }
@@ -33,8 +27,8 @@ async function createWatchlist(req, res, next) {
 // Fonction qui recherche une watchlist pour un utilisateur
 async function findWatchlist(req, res, next) {
     try {
-        let id = req.params.id;
-        let test = await crud.findOne('watchlist', {"id_item" : id})
+        let nom = req.params.nom;
+        let test = await crud.findOne('watchlist', {"name" : nom})
         return res.send(test)
     }
     catch (e) {

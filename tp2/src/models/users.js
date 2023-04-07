@@ -1,6 +1,5 @@
-class User{constructor(name, amis){             
+class User{constructor(name){             
     this.name = name;   
-    this.amis = [];
     }    
 }
 

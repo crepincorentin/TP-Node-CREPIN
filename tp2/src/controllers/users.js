@@ -43,24 +43,6 @@ async function findUser(req, res, next) {
 // ----------------------------------------------------------------------------------------------
 
 
-// Fonction de recherche de tous les utilisateurs
-async function findUsermany(req, res) {
-    try {
-        let nom = req.params.nom;
-        let test = await crud.find('users')
-        return res.send(test)
-        
-    } catch (e) {
-        console.log(`Erreur lors de l execution de la fonction findUser`);
-        console.log(e);
-        throw e;
-    }
-}
-
-
-// ----------------------------------------------------------------------------------------------
-
-
 // Fonction de mise à jour d'un utilisateur
 async function updateUser(req, res) {
     try {
@@ -79,12 +61,29 @@ async function updateUser(req, res) {
 // ----------------------------------------------------------------------------------------------
 
 
+// Fonction de recherche de tous les utilisateurs
+async function findallUser(req, res) {
+    try {
+        let test = await crud.find('users')
+        return res.send(test)
+    }
+    catch (e) {
+        console.log(`Erreur lors de l execution de la fonction findallUser`);
+        console.log(e);
+        throw e;
+    }
+}
+
+
+// ----------------------------------------------------------------------------------------------
+
+
 // Export des fonctions
 module.exports = {
     createUser,
     findUser,
-    findUsermany,
-    updateUser
+    updateUser,
+    findallUser
 };
 
 

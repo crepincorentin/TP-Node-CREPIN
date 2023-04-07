@@ -76,12 +76,29 @@ async function deleteItemMany(req, res) {
 // ----------------------------------------------------------------------------------------------
 
 
+// Fonction qui affiche tous les items
+async function findallItem(req, res) {
+    try {
+        let test = await crud.find('item', {})
+        return res.send(test)
+    } catch (e) {
+        console.log(`Erreur lors de l execution de la fonction findItem`);
+        console.log(e);
+        throw e;
+    }
+}
+
+
+// ----------------------------------------------------------------------------------------------
+
+
 // Exportation des fonctions
 module.exports = {
     findItem,
     addItem,
     deleteItem,
-    deleteItemMany
+    deleteItemMany,
+    findallItem
 };
 
 
