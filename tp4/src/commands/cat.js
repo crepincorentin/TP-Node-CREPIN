@@ -1,17 +1,19 @@
 const { SlashCommandBuilder } = require('discord.js')
 const { request } = require('undici')
 
+// Renvoi une image de chat
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('cat')
-        .setDescription('Renvoie une image de chat.'),
+        .setDescription('Renvoi une image de chat'),
     async execute(interaction) {
-        const cat = await request('https://aws.random.cat/meow')
-        const { file } = await cat.body.json()
-        
-		await interaction.reply( {files: [file] })
+        const { body } = await request('https://api.thecatapi.com/v1/images/search')
+        const data = await body.json()
+        await interaction.reply({ files: [data[0].url] })
     }
 }
+
+
 
 
 
